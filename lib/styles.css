@@ -1,0 +1,33 @@
+#app {
+    width: 400px;
+    margin: 20px auto;
+    border: 10px solid silver;
+  }
+  #monitor {
+    background-color: black;
+    color:white;
+    font-weight: bold;
+    font-size:36px;
+    margin:2px;
+    padding:5px;
+    border-radius: 5px;
+    height:40px;
+  }
+  .d-btn {
+    float: left;
+    width: calc(100% / 5 - 2px * 2);
+    margin: 2px;
+    text-align: center;
+    background-color: darkgray;
+    color: white;
+    padding: 5px 0px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .d-btn:hover{
+    background-color:black;
+  }
+
+  .wide{
+    width:calc(100%*4/5 - 2px*2)!important;
+  }

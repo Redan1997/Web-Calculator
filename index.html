@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <div id="calculator">
+    <input id="display" readonly/>
+    <div id="keys">
+      <button id="second" onclick="toggleSecond()">2nd</button>
+      <button id="pi" onclick="appendToDisplay(Math.PI.toFixed(15))">π</button>
+      <button id="e" onclick="appendToDisplay(Math.E.toFixed(15))">e</button>
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="deleteLast()">⌫</button>
+      <button id="square" onclick="square()">x²</button>
+      <button id="divide" onclick="divide()">1/x</button>
+      <button onclick="abs()">|x|</button>
+      <button onclick="appendToDisplay('.e+')">exp</button>
+      <button onclick="appendToDisplay('mod')">mod</button>
+      <button id="squareRoot" onclick="squareRoot()">²√x</button>
+      <button onclick="appendToDisplay('(')">(</button>
+      <button onclick="appendToDisplay(')')">)</button>
+      <button id="factorial" onclick="factorial()">n!</button>
+      <button onclick="appendToDisplay('/')">÷</button>
+      <button onclick="appendToDisplay('^')">x<sup>y</sup></button>
+      <button class="number" onclick="appendToDisplay('7')">7</button>
+      <button class="number" onclick="appendToDisplay('8')">8</button>
+      <button class="number" onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('*')">x</button>
+      <button id="tenPower" onclick="tenPower()">10<sup>x</sup></button>
+      <button class="number" onclick="appendToDisplay('4')">4</button>
+      <button class="number" onclick="appendToDisplay('5')">5</button>
+      <button class="number" onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button id="log" onclick="log()">log</button>
+      <button class="number" onclick="appendToDisplay('1')">1</button>
+      <button class="number" onclick="appendToDisplay('2')">2</button>
+      <button class="number" onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button id="ln" onclick="ln()">ln</button>
+      <button class="number" onclick="plusMinus()"><sup>+</sup>/-</button>
+      <button class="number" onclick="appendToDisplay('0')">0</button>
+      <button class="number" onclick="appendToDisplay('.')">.</button>
+      <button class="eql" onclick="calculate()">=</button>
+    </div>
+  </div>
+</body>
+</html>
