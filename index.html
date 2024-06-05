@@ -11,7 +11,7 @@
   <div id="calculator">
     <input id="display" readonly/>
     <div id="keys">
-      <button id="second" onclick="toggleSecond()">2nd</button>
+      <button id="second" onclick="toggleSecond()">2<sup>nd</sup></button>
       <button id="pi" onclick="appendToDisplay(Math.PI.toFixed(15))">π</button>
       <button id="e" onclick="appendToDisplay(Math.E.toFixed(15))">e</button>
       <button onclick="clearDisplay()">C</button>
@@ -26,7 +26,7 @@
       <button onclick="appendToDisplay(')')">)</button>
       <button id="factorial" onclick="factorial()">n!</button>
       <button onclick="appendToDisplay('/')">÷</button>
-      <button onclick="appendToDisplay('^')">x<sup>y</sup></button>
+      <button id="yRoot" onclick="appendToDisplay('^')">x<sup>y</sup></button>
       <button class="number" onclick="appendToDisplay('7')">7</button>
       <button class="number" onclick="appendToDisplay('8')">8</button>
       <button class="number" onclick="appendToDisplay('9')">9</button>
