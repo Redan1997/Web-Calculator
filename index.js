@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return `Math.pow(${base}, 1 / ${root})`;
     });
 
+    // Handle custom logy operator
+    const logyRegex = /(\d+(\.\d+)?)logy(\d+(\.\d+)?)/g;
+    display.value = display.value.replace(logyRegex, (match, base, _, value) => {
+      return `Math.log(${value}) / Math.log(${base})`;
+    });
+
     try {
       display.value = eval(display.value);
     } catch (error) {
@@ -148,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.getElementById('yRoot').innerText = "y√x";
       document.getElementById('yRoot').onclick = function() {
-        appendToDisplay(' yroot' );
+        appendToDisplay(' yroot ');
       };
 
       document.getElementById('tenPower').innerText = "2^x";
@@ -160,19 +166,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       };
 
-      document.getElementById('log').innerText = "log₂";
+      document.getElementById('log').innerText = "log y (x)";
       document.getElementById('log').onclick = function() {
-        try {
-          display.value = Math.log2(parseFloat(display.value));
-        } catch (error) {
-          display.value = "Error";
-        }
+        appendToDisplay('logy(');
       };
 
-      document.getElementById('ln').innerText = "logₑ";
+      document.getElementById('ln').innerText = "e^x";
       document.getElementById('ln').onclick = function() {
         try {
-          display.value = Math.log(parseFloat(display.value));
+          display.value = Math.exp(parseFloat(display.value));
         } catch (error) {
           display.value = "Error";
         }

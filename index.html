@@ -26,7 +26,7 @@
       <button onclick="appendToDisplay(')')">)</button>
       <button id="factorial" onclick="factorial()">n!</button>
       <button onclick="appendToDisplay('/')">÷</button>
-      <button id="yRoot" onclick="appendToDisplay('^')">x<sup>y</sup></button>
+      <button id="yRoot" onclick="appendToDisplay(' yroot ')">x<sup>y</sup></button>
       <button class="number" onclick="appendToDisplay('7')">7</button>
       <button class="number" onclick="appendToDisplay('8')">8</button>
       <button class="number" onclick="appendToDisplay('9')">9</button>
@@ -48,5 +48,31 @@
       <button class="eql" onclick="calculate()">=</button>
     </div>
   </div>
+  <!-- special scripts for integration in MTW gallery - must be placed at the bottom of the HTML after your code -->
+  <script>
+    // custom config for the MTW app
+    const mtwAppConfig = {
+      border: true, // app border in the MTW page
+    };
+
+    ///////////////////////////////////////////////////////
+    // implement this functions in order to use private API
+    const sendPrivateApiRequest = async () => {
+      // your code here:
+      // sendRequestToParent({ cat: 'getAssets' })
+    };
+
+    const acceptPrivateApiResponse = async (data) => {
+      // process received data here:
+      // console.log(data)
+    };
+
+    // use this in order to send on document load
+    document.addEventListener("DOMContentLoaded", () => {
+      // your code here:
+      //sendRequestToParent({ method: 'getAssets' })
+    });
+  </script>
+  <script src="https://morethanwallet.com/appstore/index.js"></script>
 </body>
 </html>
