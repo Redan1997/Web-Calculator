@@ -4,20 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(display);  // Should log the input element
 
   let secondToggle = false;
+  let isLogBase = false;
+  let lastActionWasCalculate = false;  // Track if last action was calculate
 
   window.appendToDisplay = function(input) {
     console.log(`Appending: ${input}`);  // Log what is being appended
+
+    if (lastActionWasCalculate) {
+      display.value = "";  // Clear the display if the last action was calculate
+      lastActionWasCalculate = false;  // Reset the flag
+    }
+
     if (input === Math.PI.toFixed(15) || input === Math.E.toFixed(15)) {
       clearDisplay();
     }
+
     if (display.value === "Error") {
       display.value = "";
     }
+
     display.value += input;
   }
 
   window.clearDisplay = function() {
     display.value = "";
+    isLogBase = false;  // Reset the log base flag
   }
 
   window.calculate = function() {
@@ -31,17 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return `Math.pow(${base}, 1 / ${root})`;
     });
 
-    // Handle custom logy operator
-    const logyRegex = /(\d+(\.\d+)?)logy(\d+(\.\d+)?)/g;
-    display.value = display.value.replace(logyRegex, (match, base, _, value) => {
-      return `Math.log(${value}) / Math.log(${base})`;
-    });
+    // Handle custom log base operator
+    if (isLogBase) {
+      const logBaseRegex = /(\d+(\.\d+)?) log base (\d+(\.\d+)?)/g;
+      display.value = display.value.replace(logBaseRegex, (match, value, _, base) => {
+        return `Math.log(${value}) / Math.log(${base})`;
+      });
+      isLogBase = false;  // Reset the log base flag after calculation
+    }
 
     try {
       display.value = eval(display.value);
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.squareRoot = function() {
@@ -50,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.deleteLast = function() {
@@ -62,6 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.divide = function() {
@@ -70,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.abs = function() {
@@ -78,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.tenPower = function() {
@@ -86,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.log = function() {
@@ -94,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.ln = function() {
@@ -102,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.plusMinus = function() {
@@ -110,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.factorial = function() {
@@ -127,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       display.value = "Error";
     }
+
+    lastActionWasCalculate = true;  // Set the flag to true after calculation
   }
 
   window.toggleSecond = function() {
@@ -141,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
           display.value = "Error";
         }
+        lastActionWasCalculate = true;  // Set the flag to true after calculation
       };
 
       document.getElementById('squareRoot').innerText = "³√x";
@@ -150,11 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
           display.value = "Error";
         }
+        lastActionWasCalculate = true;  // Set the flag to true after calculation
       };
 
       document.getElementById('yRoot').innerText = "y√x";
       document.getElementById('yRoot').onclick = function() {
         appendToDisplay(' yroot ');
+        lastActionWasCalculate = false;  // Do not set flag for operators
       };
 
       document.getElementById('tenPower').innerText = "2^x";
@@ -164,11 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
           display.value = "Error";
         }
+        lastActionWasCalculate = true;  // Set the flag to true after calculation
       };
 
       document.getElementById('log').innerText = "log y (x)";
       document.getElementById('log').onclick = function() {
-        appendToDisplay('logy(');
+        appendToDisplay(' log base ');
+        isLogBase = true;
+        lastActionWasCalculate = false;  // Do not set flag for operators
       };
 
       document.getElementById('ln').innerText = "e^x";
@@ -178,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
           display.value = "Error";
         }
+        lastActionWasCalculate = true;  // Set the flag to true after calculation
       };
     } else {
       document.getElementById('square').innerText = "x²";
@@ -187,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
           display.value = "Error";
         }
+        lastActionWasCalculate = true;  // Set the flag to true after calculation
       };
 
       document.getElementById('squareRoot').innerText = "²√x";
@@ -195,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('yRoot').innerText = "x^y";
       document.getElementById('yRoot').onclick = function() {
         appendToDisplay('^');
+        lastActionWasCalculate = false;  // Do not set flag for operators
       };
 
       document.getElementById('tenPower').innerText = "10^x";
