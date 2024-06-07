@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.appendToDisplay = function(input) {
     console.log(`Appending: ${input}`);  // Log what is being appended
-
+    
     if (lastActionWasCalculate) {
-      display.value = "";  // Clear the display if the last action was calculate
+      if (input && document.querySelector(`button.number.${input}`)) 
+        display.value = "";  // Clear the display if the last action was calculate
       lastActionWasCalculate = false;  // Reset the flag
     }
 
@@ -35,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     display.value = display.value.replaceAll("^", "**");
     display.value = display.value.replaceAll("mod", "%");
     display.value = display.value.replaceAll("exp", "10*");
-
     // Handle custom yroot operator
     const yrootRegex = /(\d+(\.\d+)?) yroot (\d+(\.\d+)?)/g;
     display.value = display.value.replace(yrootRegex, (match, base, _, root) => {
@@ -248,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.getElementById('ln').innerText = "ln";
       document.getElementById('ln').onclick = window.ln;
+      
     }
   };
 });
