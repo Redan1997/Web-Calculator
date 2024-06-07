@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`Appending: ${input}`);  // Log what is being appended
     
     if (lastActionWasCalculate) {
-      if (input && document.querySelector(`button.number.${input}`)) 
+      if (input &&!("+-*/".includes(input))) 
         display.value = "";  // Clear the display if the last action was calculate
       lastActionWasCalculate = false;  // Reset the flag
     }
