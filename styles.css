@@ -16,10 +16,10 @@ body {
 }
 
 #display {
-    width: 90%;
+    width: 95%;
     height: 70px;
     padding: 10px;
-    font-size: 30px;
+    font-size: 25px;
     text-align: Right;
     direction: ltr;
     border: none;

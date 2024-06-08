@@ -11,13 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`Appending: ${input}`);  // Log what is being appended
     
     if (lastActionWasCalculate) {
-      if (input &&!("+-*/".includes(input))) 
-        display.value = "";  // Clear the display if the last action was calculate
+      if (!("+-*/^.e+mod yroot  log base ".includes(input))) 
+        if(input !=3.141592653589793 || input!=2.718281828459045)
+          display.value = "";  // Clear the display if the last action was calculate
       lastActionWasCalculate = false;  // Reset the flag
     }
 
     if (input === Math.PI.toFixed(15) || input === Math.E.toFixed(15)) {
-      clearDisplay();
+        //clearDisplay();
+      lastActionWasCalculate = true;
     }
 
     if (display.value === "Error") {
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.clearDisplay = function() {
-    display.value = "";
+      display.value = "";
     isLogBase = false;  // Reset the log base flag
   }
 
